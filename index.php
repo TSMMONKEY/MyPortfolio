@@ -1,61 +1,5 @@
 <?php require "include/header.php"; ?>
 
-    <main>
-      <nav class="navbar navbar-expand-lg">
-        <div class="container">
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-
-          <a class="navbar-brand" href="index.html">
-            <strong><span>Thabani</span> Steve</strong>
-          </a>
-
-          <div class="d-lg-none">
-            <a href="sign-in.html" class="bi-person custom-icon me-3"></a>
-
-            <a href="product-detail.html" class="bi-bag custom-icon"></a>
-          </div>
-
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul
-              class="navbar-nav mx-auto"
-              style="width: 100%; justify-content: end"
-            >
-              <li class="nav-item">
-                <a class="nav-link active" href="index.html">Home</a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="#aboutMeSection">About</a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="/#portfolioProjects">Projects</a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="contact.html">Contact</a>
-              </li>
-            </ul>
-
-            <!-- <div class="d-none d-lg-block">
-              <a href="sign-in.html" class="bi-person custom-icon me-3"></a>
-
-              <a href="product-detail.html" class="bi-bag custom-icon"></a>
-            </div> -->
-          </div>
-        </div>
-      </nav>
-
       <section class="slick-slideshow">
         <div class="slick-custom">
           <img
@@ -963,7 +907,7 @@
             </div>
 
             <div class="col-12 text-center">
-              <a href="products.html" class="view-all">View All Projects</a>
+              <a href="/projects" class="view-all">View All Projects</a>
             </div>
           </div>
         </div>
