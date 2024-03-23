@@ -21,6 +21,9 @@
                         <div class="col-12">
                             <h2 class="mb-5">PHP MVC</h2>
                         </div>
+                        <?php
+                            
+                        ?>
 
                         <div class="col-lg-4 col-12 mb-3">
                             <div class="product-thumb">

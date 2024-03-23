@@ -3,7 +3,7 @@
       <section class="slick-slideshow">
         <div class="slick-custom">
           <img
-            src="images/slideshow/medium-shot-business-women-high-five.jpeg"
+            src="/images/slideshow/medium-shot-business-women-high-five.jpeg"
             class="img-fluid"
             alt=""
           />
@@ -29,7 +29,7 @@
 
         <div class="slick-custom">
           <img
-            src="images/phpHeroSection.jpeg"
+            src="/images/phpHeroSection.jpeg"
             class="img-fluid"
             alt=""
           />
@@ -56,7 +56,7 @@
 
         <div class="slick-custom">
           <img
-            src="images/slideshow/worpdress-dev.jpeg"
+            src="/images/slideshow/worpdress-dev.jpeg"
             class="img-fluid"
             alt=""
             height="100%"
@@ -155,7 +155,7 @@
                     </h4>
                     <div class="col-lg-7 col-12">
                       <img
-                        src="images/pim-chu-z6NZ76_UTDI-unsplash.jpeg"
+                        src="/images/pim-chu-z6NZ76_UTDI-unsplash.jpeg"
                         class="img-fluid"
                         alt=""
                       />
@@ -240,7 +240,7 @@
                     <h4 class="mb-3 text-center">Skills</h4>
                     <div class="col-lg-7 col-12">
                       <img
-                        src="images/phpSkillsSet.jpeg"
+                        src="/images/phpSkillsSet.jpeg"
                         class="img-fluid"
                         alt=""
                         style="height: 90%; margin: 0 auto; width: 100%"
@@ -822,7 +822,7 @@
               <div class="product-thumb">
                 <a href="product-detail.html">
                   <img
-                    src="images/projects/Screenshot 2023-08-07 081248.png"
+                    src="/images/projects/Screenshot 2023-08-07 081248.png"
                     class="img-fluid product-image"
                     alt=""
                   />
@@ -852,7 +852,7 @@
               <div class="product-thumb">
                 <a href="product-detail.html">
                   <img
-                    src="images/projects/Screenshot-webkors-third.png"
+                    src="/images/projects/Screenshot-webkors-third.png"
                     class="img-fluid product-image"
                     alt=""
                   />
@@ -881,7 +881,7 @@
               <div class="product-thumb">
                 <a href="product-detail.html">
                   <img
-                    src="images/projects/Screenshot 2023-08-21 093103.png"
+                    src="/images/projects/Screenshot 2023-08-21 093103.png"
                     class="img-fluid product-image"
                     alt=""
                   />
