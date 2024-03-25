@@ -671,7 +671,7 @@ strong {
 }
 
 .slick-testimonial-caption::before {
-  content: open-quote;
+  /* content: open-quote; */
   display: inline-block;
   color: var(--primary-color);
   font-family: auto;

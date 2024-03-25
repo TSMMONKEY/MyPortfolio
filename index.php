@@ -1,4 +1,19 @@
-<?php require "include/header.php"; ?>
+<?php
+// Start the session
+session_start();
+
+ require "include/header.php";
+ require "include/DbConnect.php";
+
+ $sql = "SELECT * FROM project_info WHERE name IN ('Instant Solar', 'Gondo Skills Institute', 'Webkors')";
+ $result = $conn->query($sql);
+
+ ?>
+    <!-- <section class="preloader">
+      <div class="spinner">
+        <span class="sk-inner-circle"></span>
+      </div>
+    </section> -->
 
       <section class="slick-slideshow">
         <div class="slick-custom">
@@ -15,7 +30,7 @@
                   <h2 class="slick-title">HEY THERE</h2>
 
                   <p class="lead text-white mt-lg-3 mb-lg-5" style="color: #fff; font-weight: 500;">
-                   <strong> I'M THABANI STEVE MATSHAZI</strong>
+                   <strong> I'M THABANI STEVE MATSHAZI<br> <small style="font-size: 21px; color:#f5f5f5;">A PHP/Worpdress Developer</small></strong>
                   </p>
 
                   <a href="/#aboutMeSection" class="btn custom-btn"
@@ -27,9 +42,9 @@
           </div>
         </div>
 
-        <div class="slick-custom">
+        <!-- <div class="slick-custom">
           <img
-            src="/images/phpHeroSection.jpeg"
+            src="images/phpHeroSection.jpeg"
             class="img-fluid"
             alt=""
           />
@@ -56,7 +71,7 @@
 
         <div class="slick-custom">
           <img
-            src="/images/slideshow/worpdress-dev.jpeg"
+            src="images/slideshow/worpdress-dev.jpeg"
             class="img-fluid"
             alt=""
             height="100%"
@@ -78,7 +93,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
       </section>
 
       <section class="about section-padding" id="aboutMeSection">
@@ -155,7 +170,7 @@
                     </h4>
                     <div class="col-lg-7 col-12">
                       <img
-                        src="/images/pim-chu-z6NZ76_UTDI-unsplash.jpeg"
+                        src="images/pim-chu-z6NZ76_UTDI-unsplash.jpeg"
                         class="img-fluid"
                         alt=""
                       />
@@ -240,7 +255,7 @@
                     <h4 class="mb-3 text-center">Skills</h4>
                     <div class="col-lg-7 col-12">
                       <img
-                        src="/images/phpSkillsSet.jpeg"
+                        src="images/phpSkillsSet.jpeg"
                         class="img-fluid"
                         alt=""
                         style="height: 90%; margin: 0 auto; width: 100%"
@@ -817,19 +832,38 @@
             <div class="col-12 text-center">
               <h2 class="mb-5">Portfolio <span>Projects</span></h2>
             </div>
+                <?php
+                $names = array('Instant Solar', 'Webkors', 'Gondo Skills Institute');
 
-            <div class="col-lg-4 col-12 mb-3">
+                // Loop through each name
+                foreach ($names as $name) {
+                    // Query to select rows with the current name
+                    $sql = "SELECT * FROM project_info WHERE name = :name";
+                    $stmt = $conn->prepare($sql);
+                    $stmt->bindParam(':name', $name);
+                    $stmt->execute();
+                
+                    // Check if there are any results
+                    $rowCount = $stmt->rowCount();
+                    if ($rowCount > 0) {
+                        // Loop through each row with the current name
+                        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                            // Output or process the row as needed
+                            // echo "Name: " . $row['name'] . "<br>";
+
+                            ?>
+                <div class="col-lg-4 col-12 mb-3">
               <div class="product-thumb">
                 <a href="product-detail.html">
                   <img
-                    src="/images/projects/Screenshot 2023-08-07 081248.png"
+                    src="images/projects/<?php echo $row['img']; ?>"
                     class="img-fluid product-image"
                     alt=""
                   />
                 </a>
 
                 <div class="product-top d-flex">
-                  <span class="product-alert me-auto">PHP MVC</span>
+                  <span class="product-alert me-auto"><?php echo $row['category']; ?></span>
 
                   <a href="#" class="bi-heart-fill product-icon"></a>
                 </div>
@@ -838,21 +872,30 @@
                   <div>
                     <h5 class="product-title mb-0">
                       <a href="product-detail.html" class="product-title-link"
-                        >Instant Solar</a
+                        ><?php echo $name ?></a
                       >
                     </h5>
 
-                    <p class="product-p">PHP MVC Website</p>
+                    <p class="product-p"><?php echo $row['category']; ?> Website</p>
                   </div>
                 </div>
               </div>
             </div>
-
-            <div class="col-lg-4 col-12">
+            <?php
+                            // echo "Description: " . $row['description'] . "<br>";
+                            // Add more fields as necessary
+                          }
+                        }
+                    }
+                    
+                    // Close the connection
+                    $conn = null;
+                    ?>
+            <!-- <div class="col-lg-4 col-12">
               <div class="product-thumb">
                 <a href="product-detail.html">
                   <img
-                    src="/images/projects/Screenshot-webkors-third.png"
+                    src="images/projects/Screenshot-webkors-third.png"
                     class="img-fluid product-image"
                     alt=""
                   />
@@ -881,7 +924,7 @@
               <div class="product-thumb">
                 <a href="product-detail.html">
                   <img
-                    src="/images/projects/Screenshot 2023-08-21 093103.png"
+                    src="images/projects/Screenshot 2023-08-21 093103.png"
                     class="img-fluid product-image"
                     alt=""
                   />
@@ -904,7 +947,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
 
             <div class="col-12 text-center">
               <a href="/projects" class="view-all">View All Projects</a>

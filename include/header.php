@@ -15,9 +15,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;700;900&display=swap"
-      rel="stylesheet"
-    />
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@10300;400;700;900&display=swap" rel="stylesheet"/>
 
     <link href="/css/bootstrap.min.css" rel="stylesheet" />
     <link href="/css/bootstrap-icons.css" rel="stylesheet" />
@@ -33,15 +31,7 @@
   <main>
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
 
