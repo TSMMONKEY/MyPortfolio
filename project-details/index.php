@@ -1,103 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<?php
+session_start();
+require "../include/header.php"; 
+require "../include/DbConnect.php"; 
 
-    <meta name="description" content="" />
-    <meta name="author" content="" />
+// Check if the 'name' query parameter exists
+if(isset($_GET['name'])) {
+    // Get the value of the 'name' query parameter
+    $paramValue = $_GET['name'];
 
-    <title>Tooplate's Little Fashion - Product Detail</title>
+    // Prepare the SQL statement
+    $sql = "SELECT * FROM project_info WHERE name = :name";
+    $stmt = $conn->prepare($sql);
 
-    <!-- CSS FILES -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    // Bind the parameter
+    $stmt->bindParam(':name', $paramValue);
 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    // Execute the statement
+    if ($stmt->execute()) {
+        // Check if there are any results
+        if ($stmt->rowCount() > 0) {
+            while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;700;900&display=swap"
-      rel="stylesheet"
-    />
-
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/bootstrap-icons.css" rel="stylesheet" />
-
-    <link rel="stylesheet" href="css/slick.css" />
-
-    <link href="css/tooplate-little-fashion.css" rel="stylesheet" />
-    <!--
-
-Tooplate 2127 Little Fashion
-
-https://www.tooplate.com/view/2127-little-fashion
-
--->
-  </head>
-
-  <body>
-    <section class="preloader">
-      <div class="spinner">
-        <span class="sk-inner-circle"></span>
-      </div>
-    </section>
-
-    <main>
-      <nav class="navbar navbar-expand-lg">
-        <div class="container">
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-
-          <a class="navbar-brand" href="index.html">
-            <strong><span>Little</span> Fashion</strong>
-          </a>
-
-          <div class="d-lg-none">
-            <a href="sign-in.html" class="bi-person custom-icon me-3"></a>
-
-            <a href="product-detail.html" class="bi-bag custom-icon"></a>
-          </div>
-
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mx-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="index.html">Home</a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="about.html">Story</a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="/projects">Products</a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="faq.html">FAQs</a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="contact.html">Contact</a>
-              </li>
-            </ul>
-
-            <div class="d-none d-lg-block">
-              <a href="sign-in.html" class="bi-person custom-icon me-3"></a>
-
-              <a href="product-detail.html" class="bi-bag custom-icon"></a>
-            </div>
-          </div>
-        </div>
-      </nav>
-
+?>
       <header
         class="site-header section-padding d-flex justify-content-center align-items-center"
       >
@@ -105,8 +29,8 @@ https://www.tooplate.com/view/2127-little-fashion
           <div class="row">
             <div class="col-lg-10 col-12">
               <h1>
-                <span class="d-block text-primary">Gondo Skills Institute</span>
-                <span class="d-block text-dark">A PHP MVC Website</span>
+                <span class="d-block text-primary"><?php echo $row['name'] ?></span>
+                <span class="d-block text-dark" style="text-transform: capitalize;">A <?php echo $row['category'] ?> Website</span>
               </h1>
             </div>
           </div>
@@ -119,7 +43,7 @@ https://www.tooplate.com/view/2127-little-fashion
             <div class="col-lg-6 col-12">
               <div class="product-thumb">
                 <img
-                  src="images/projects/Screenshot%202023-08-21%20093103.png"
+                  src="/images/projects/<?php echo $row['img'] ?>"
                   class="img-fluid product-image"
                   alt=""
                 />
@@ -129,7 +53,7 @@ https://www.tooplate.com/view/2127-little-fashion
             <div class="col-lg-6 col-12">
               <div class="product-info d-flex py-0">
                 <div>
-                  <h2 class="product-title mb-0">Gondo Skills Institute</h2>
+                  <h2 class="product-title mb-0"><?php echo $row['name'] ?></h2>
                 </div>
               </div>
 
@@ -137,21 +61,7 @@ https://www.tooplate.com/view/2127-little-fashion
                 <strong class="d-block mt-4 mb-2">Description</strong>
 
                 <p class="mb-5">
-                  Welcome to Gondo Skills Institute, a project I poured my heart
-                  and expertise into as a freelance endeavor back in 2023.
-                  Crafting this platform using PHP MVC architecture was both a
-                  labor of love and a testament to my commitment to
-                  revolutionizing the way we approach skills development.
-                </p>
-
-                <p>
-                  At its core, Gondo Skills Institute is more than just a
-                  website; it's a dynamic learning ecosystem designed to empower
-                  individuals like yourself to flourish in today's fast-paced
-                  world. Picture a virtual space where learning isn't confined
-                  to textbooks and lectures but instead comes alive through
-                  interactive modules, personalized learning paths, and a
-                  vibrant community of like-minded learners.
+                <?php echo $row['description'] ?>
                 </p>
               </div>
 
@@ -159,8 +69,9 @@ https://www.tooplate.com/view/2127-little-fashion
 
                 <div class="col-lg-6 col-12 mt-4 mt-lg-0">
                   <a
-                    href="/"
+                    href="<?php echo $row['link'] ?>"
                     class="btn custom-btn cart-btn"
+                    target="_blank"
                   >
                     View Project
                   </a>
@@ -169,8 +80,9 @@ https://www.tooplate.com/view/2127-little-fashion
                 <h6 class="mt-3">Skills Used</h6>
 
                 <p class="mt-0">
-                  <ul>
-                    <li class="mt-0 product-additional-link">HTML</li>
+                  <ul style="width: 5000px;">
+                  <?php echo $row['skills']; ?>
+                    <!-- <li class="mt-0 product-additional-link">HTML</li>
                     <li class="mt-0 product-additional-link">CSS</li>
                     <li class="mt-0 product-additional-link">Javascript</li>
                     <li class="mt-0 product-additional-link">PHP</li>
@@ -178,7 +90,7 @@ https://www.tooplate.com/view/2127-little-fashion
                     <li class="mt-0 product-additional-link">Brumas</li>
                     <li class="mt-0 product-additional-link">Composer</li>
                     <li class="mt-0 product-additional-link">Bootstrap</li>
-                    <li class="mt-0 product-additional-link">SEO</li>
+                    <li class="mt-0 product-additional-link">SEO</li> -->
                   </ul>
                 </p>
               </div>
@@ -413,3 +325,19 @@ https://www.tooplate.com/view/2127-little-fashion
     <script src="js/custom.js"></script>
   </body>
 </html>
+
+<?php
+            }
+          } else {
+              echo "0 results";
+          }
+      } else {
+          echo "Error executing the query.";
+      }
+  } else {
+      echo "No 'name' query parameter found.";
+  }
+  
+  // Close the connection
+  $conn = null;
+  ?>

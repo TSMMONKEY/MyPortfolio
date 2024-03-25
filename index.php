@@ -30,7 +30,7 @@ session_start();
                   <h2 class="slick-title">HEY THERE</h2>
 
                   <p class="lead text-white mt-lg-3 mb-lg-5" style="color: #fff; font-weight: 500;">
-                   <strong> I'M THABANI STEVE MATSHAZI<br> <small style="font-size: 21px; color:#f5f5f5;">A PHP/Worpdress Developer</small></strong>
+                   <strong> I'M THABANI STEVE MATSHAZI<br> <small style="font-size: 21px; color:#f5f5f5;">A PHP/Wordpress Developer</small></strong>
                   </p>
 
                   <a href="/#aboutMeSection" class="btn custom-btn"
@@ -833,28 +833,27 @@ session_start();
               <h2 class="mb-5">Portfolio <span>Projects</span></h2>
             </div>
                 <?php
-                $names = array('Instant Solar', 'Webkors', 'Gondo Skills Institute');
+                  $names = array('Instant Solar', 'Webkors', 'Gondo Skills Institute');
 
-                // Loop through each name
-                foreach ($names as $name) {
-                    // Query to select rows with the current name
-                    $sql = "SELECT * FROM project_info WHERE name = :name";
-                    $stmt = $conn->prepare($sql);
-                    $stmt->bindParam(':name', $name);
-                    $stmt->execute();
-                
-                    // Check if there are any results
-                    $rowCount = $stmt->rowCount();
-                    if ($rowCount > 0) {
-                        // Loop through each row with the current name
-                        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                            // Output or process the row as needed
-                            // echo "Name: " . $row['name'] . "<br>";
-
-                            ?>
-                <div class="col-lg-4 col-12 mb-3">
+                  // Loop through each name
+                  foreach ($names as $name) {
+                      // Query to select rows with the current name
+                      $sql = "SELECT * FROM project_info WHERE name = :name";
+                      $stmt = $conn->prepare($sql);
+                      $stmt->bindParam(':name', $name);
+                      $stmt->execute();
+                  
+                      // Check if there are any results
+                      $rowCount = $stmt->rowCount();
+                      if ($rowCount > 0) {
+                          // Loop through each row with the current name
+                          while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                              // Output or process the row as needed
+                              // echo "Name: " . $row['name'] . "<br>";
+                ?>
+            <div class="col-lg-4 col-12 mb-3">
               <div class="product-thumb">
-                <a href="product-detail.html">
+                <a href="project-details?name=<?php echo $row['name'] ?>">
                   <img
                     src="images/projects/<?php echo $row['img']; ?>"
                     class="img-fluid product-image"
@@ -865,14 +864,13 @@ session_start();
                 <div class="product-top d-flex">
                   <span class="product-alert me-auto"><?php echo $row['category']; ?></span>
 
-                  <a href="#" class="bi-heart-fill product-icon"></a>
+                  <!-- <a href="#" class="bi-heart-fill product-icon"></a> -->
                 </div>
 
                 <div class="product-info d-flex">
                   <div>
                     <h5 class="product-title mb-0">
-                      <a href="product-detail.html" class="product-title-link"
-                        ><?php echo $name ?></a
+                      <a href="project-details?name=<?php echo $row['name'] ?>" class="product-title-link"><?php echo $name ?></a
                       >
                     </h5>
 
@@ -891,63 +889,6 @@ session_start();
                     // Close the connection
                     $conn = null;
                     ?>
-            <!-- <div class="col-lg-4 col-12">
-              <div class="product-thumb">
-                <a href="product-detail.html">
-                  <img
-                    src="images/projects/Screenshot-webkors-third.png"
-                    class="img-fluid product-image"
-                    alt=""
-                  />
-                </a>
-
-                <div class="product-top d-flex">
-                  <span class="product-alert">PHP MVC</span>
-
-                  <a href="#" class="bi-heart-fill product-icon ms-auto"></a>
-                </div>
-
-                <div class="product-info d-flex">
-                  <div>
-                    <h5 class="product-title mb-0">
-                      <a href="product-detail.html" class="product-title-link"
-                        >Webkors</a
-                      >
-                    </h5>
-                    <p class="product-p">Wordpress Theme Development</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-12 mb-3">
-              <div class="product-thumb">
-                <a href="product-detail.html">
-                  <img
-                    src="images/projects/Screenshot 2023-08-21 093103.png"
-                    class="img-fluid product-image"
-                    alt=""
-                  />
-                </a>
-
-                <div class="product-top d-flex">
-                  <span class="product-alert">Wordpress Theme</span>
-
-                  <a href="#" class="bi-heart-fill product-icon ms-auto"></a>
-                </div>
-
-                <div class="product-info d-flex">
-                  <div>
-                    <h5 class="product-title mb-0">
-                      <a href="product-detail.html" class="product-title-link"
-                        >Gondo SKills Institute</a
-                      >
-                    </h5>
-                    <p class="product-p">PHP MVC</p>
-                  </div>
-                </div>
-              </div>
-            </div> -->
 
             <div class="col-12 text-center">
               <a href="/projects" class="view-all">View All Projects</a>

@@ -55,7 +55,7 @@
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" href="#aboutMeSection">About</a>
+                <a class="nav-link" href="/#aboutMeSection">About</a>
               </li>
 
               <li class="nav-item">
